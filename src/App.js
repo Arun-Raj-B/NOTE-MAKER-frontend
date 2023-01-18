@@ -14,7 +14,7 @@ import AdminLandingPage from "./screens/AdminLandingPage/AdminLandingPage";
 import UpdateUser from "./screens/UpdateUser/UpdateUser";
 import Page404 from "./screens/Page404/Page404";
 
-export const URL = process.env.REACT_APP_SERVER_URL;
+export const URL = "https://note-maker-app-backend.onrender.com";
 
 const App = () => {
   const [search, setSearch] = useState("");

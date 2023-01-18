@@ -16,7 +16,7 @@ import {
   userUpdateSuccess,
   userUpdateFail,
 } from "../features/users/userUpdateSlice";
-
+import { URL } from "../App";
 export const login = (email, password) => async (dispatch) => {
   try {
     const config = {
@@ -27,7 +27,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(userLoginReq());
 
     const { data } = await axios.post(
-      "/api/users/login",
+      `${URL}/api/users/login`,
       {
         email,
         password,
@@ -43,10 +43,10 @@ export const login = (email, password) => async (dispatch) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
-    dispatch(userLoginFail(errorIs)); 
+    dispatch(userLoginFail(errorIs));
   }
 };
- 
+
 export const logout = () => async (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch(userLogout());
@@ -62,7 +62,7 @@ export const register = (name, email, password, pic) => async (dispatch) => {
     dispatch(userRegisterReq());
 
     const { data } = await axios.post(
-      "/api/users/",
+      `${URL}/api/users/`,
       {
         name,
         email,
@@ -100,7 +100,7 @@ export const updateProfile = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post("/api/users/profile", user, config);
+    const { data } = await axios.post(`${URL}/api/users/profile`, user, config);
 
     dispatch(userUpdateSuccess(data));
 
